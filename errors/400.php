@@ -1,0 +1,1 @@
+<?php $code=400; $title="Bad Request"; $message="The request could not be understood by the server."; include __DIR__ . '/_layout.php'; ?>

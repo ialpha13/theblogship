@@ -1,0 +1,29 @@
+# Node / dependency folders
+node_modules/
+vendor/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local config and secrets
+/config.local.php
+/.env
+
+# Database dumps
+/db.sql
+
+# Certificate images (keep placeholder only)
+/assets/file/certificates/*
+!/assets/file/certificates/placeholdercertificate.png
+
+# Logs
+*.log
+
+# PHPStorm / VSCode
+.idea/
+.vscode/
+
+# Build outputs
+dist/
+build/

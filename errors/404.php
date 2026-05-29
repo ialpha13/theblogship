@@ -1,0 +1,1 @@
+<?php $code=404; $title="Page Not Found"; $message="The page you requested could not be found."; include __DIR__ . '/_layout.php'; ?>

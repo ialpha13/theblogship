@@ -1,0 +1,24 @@
+/* Base Styles */
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html, body{
+  height: 100%;
+}
+
+body{
+  background: transparent; /* background is handled by .ms-bg */
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Backdrop layers (add these divs once per page: right after <body>) */
+.ms-page-pad{
+  padding-top: 84px; /* space under fixed navbar */
+}
+
+/* When mobile menu opens */
+body.ms-menu-open{ overflow: hidden; }
+
+
+/* Accessibility */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}

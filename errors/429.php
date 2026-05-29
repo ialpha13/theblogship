@@ -1,0 +1,1 @@
+<?php $code=429; $title="Too Many Requests"; $message="You’ve made too many requests. Please try again later."; include __DIR__ . '/_layout.php'; ?>

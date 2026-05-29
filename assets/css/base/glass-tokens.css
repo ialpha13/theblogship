@@ -1,0 +1,38 @@
+:root{
+  /* Core palette */
+  --bg0: #070A10;
+  --bg1: #0B1220;
+  --bg2: #0E1728;
+
+  --text: rgba(244, 246, 250, .92);
+  --muted: rgba(244, 246, 250, .70);
+
+  --line: rgba(255,255,255,.10);
+  --line2: rgba(255,255,255,.14);
+
+  /* Accent */
+  --acc0: #3BE3D6;     /* mint-teal */
+  --acc1: #4DA3FF;     /* cool blue */
+  --acc2: #B07CFF;     /* violet glow */
+
+  /* Glass */
+  --glass: rgba(255,255,255,.06);
+  --glass2: rgba(255,255,255,.08);
+  --glass3: rgba(255,255,255,.10);
+
+  --blur: 14px;
+  --radius: 18px;
+
+  /* Shadows */
+  --shadow: 0 18px 55px rgba(0,0,0,.45);
+  --shadow2: 0 10px 30px rgba(0,0,0,.35);
+
+  /* Motion */
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --fast: 170ms var(--ease);
+  --med: 320ms var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce){
+  :root{ --fast: 0ms; --med: 0ms; }
+}

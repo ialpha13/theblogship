@@ -1,0 +1,103 @@
+# DO NOT REMOVE THIS LINE AND THE LINES BELOW ERRORPAGEID:IbNHrb0VJR
+# DO NOT REMOVE THIS LINE AND THE LINES ABOVE IbNHrb0VJR:ERRORPAGEID
+
+# ------------------------------
+# Security headers + hardening
+# ------------------------------
+RewriteEngine On
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Rewrite robots.txt to robots.php
+RewriteRule ^robots\.txt$ robots.php [L]
+
+# Rewrite sitemap.xml to sitemap.php
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+Options -Indexes
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+
+  # NOTE: X-XSS-Protection is deprecated in modern browsers but harmless for legacy.
+  Header always set X-XSS-Protection "0"
+
+  # Basic CSP (kept permissive for Tailwind CDN + external fonts/icons)
+  # Tighten later once you self-host assets.
+  Header always set Content-Security-Policy "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+
+  # HSTS only when HTTPS is on
+  <IfModule mod_setenvif.c>
+    SetEnvIfExpr "%{HTTPS} == 'on'" is_https
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=is_https
+  </IfModule>
+</IfModule>
+
+# ------------------------------
+# Compression
+# ------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript text/javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ------------------------------
+# Browser caching rules
+# ------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML / PHP (short cache)
+  ExpiresByType text/html "access plus 5 minutes"
+
+  # CSS / JS
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType text/javascript "access plus 30 days"
+
+  # Images
+  ExpiresByType image/jpeg "access plus 365 days"
+  ExpiresByType image/jpg "access plus 365 days"
+  ExpiresByType image/png "access plus 365 days"
+  ExpiresByType image/gif "access plus 365 days"
+  ExpiresByType image/webp "access plus 365 days"
+  ExpiresByType image/svg+xml "access plus 365 days"
+  ExpiresByType image/x-icon "access plus 365 days"
+
+  # Fonts
+  ExpiresByType font/ttf "access plus 365 days"
+  ExpiresByType font/otf "access plus 365 days"
+  ExpiresByType font/woff "access plus 365 days"
+  ExpiresByType font/woff2 "access plus 365 days"
+
+  # PDFs / misc
+  ExpiresByType application/pdf "access plus 30 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Cache-Control headers for static assets
+  <FilesMatch "\.(css|js|png|jpg|jpeg|gif|webp|svg|ico|woff|woff2|ttf|otf|pdf)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Don't cache HTML/PHP aggressively
+  <FilesMatch "\.(html|php)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# Custom error pages
+ErrorDocument 400 /errors/400.php
+ErrorDocument 401 /errors/401.php
+ErrorDocument 403 /errors/403.php
+ErrorDocument 404 /errors/404.php
+ErrorDocument 429 /errors/429.php
+ErrorDocument 500 /errors/500.php
+ErrorDocument 503 /errors/503.php

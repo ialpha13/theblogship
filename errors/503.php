@@ -1,0 +1,1 @@
+<?php $code=503; $title="Service Unavailable"; $message="The service is temporarily unavailable. Please try again later."; include __DIR__ . '/_layout.php'; ?>

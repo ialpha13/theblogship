@@ -1,0 +1,13 @@
+<?php
+// Copy this file to config.local.php and fill in real values.
+// This file MUST NOT be committed. Add it to .gitignore.
+
+if (!defined('DB_HOST')) define('DB_HOST', 'localhost');
+if (!defined('DB_NAME')) define('DB_NAME', 'your_database_name_here');
+if (!defined('DB_USER')) define('DB_USER', 'your_database_user_here');
+if (!defined('DB_PASS')) define('DB_PASS', 'your_database_password_here');
+
+// Optionally override SITE_MAIL_FROM/TO
+// if (!defined('SITE_MAIL_FROM')) define('SITE_MAIL_FROM', 'no-reply@example.com');
+// if (!defined('SITE_MAIL_TO')) define('SITE_MAIL_TO', 'you@example.com');
+?>

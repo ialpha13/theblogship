@@ -1,0 +1,103 @@
+/* Resume styling */
+ .heading.resume h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #319795; /* Matches the teal color from your design */
+  text-align: center;
+  margin: 80px 0 40px;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.heading.resume h1::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #00b4d8; /* A lighter teal shade */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+      .section1.resume {
+          margin: 0;
+          font-family: 'Poppins', sans-serif;
+          
+          padding: 20px;
+         
+      }
+
+      .resume .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
+         
+      }
+
+      .resume h1, .resume h2, .resume h3 {
+          color: #319795;
+      }
+
+      .resume h1 {
+          font-size: 32px;
+          font-weight: 700;
+          margin-bottom: 10px;
+      }
+
+      .resume h2 {
+          font-size: 24px;
+          font-weight: 700;
+          margin-bottom: 10px;
+      }
+
+      .resume h3 {
+          font-size: 20px;
+          margin-bottom: 10px;
+      }
+
+      .resume p {
+          font-size: 16px;
+          margin-bottom: 10px;
+          line-height: 1.6;
+          text-align: justify;
+      }
+
+      .resume .section {
+          margin-bottom: 20px;
+      }
+
+      .resume .section:last-child {
+          margin-bottom: 0;
+      }
+
+      .resume .skills, .resume .certificates, .resume .languages, .resume .hobbies {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+      }
+
+      .resume .skills span, .resume .certificates span, .resume .languages span, .resume .hobbies span {
+          background-color: #e0f7fa;
+          padding: 5px 10px;
+          border-radius: 5px;
+          font-size: 14px;
+      }
+
+      .resume .badges {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 10px;
+      }
+
+      .resume .badge {
+          flex: 1 1 calc(33.333% - 10px);
+          display: flex;
+          justify-content: center;
+      }
+
+      .resume .badge iframe {
+          border: none;
+          width: 100%;
+          max-width: 150px;
+          height: 270px;
+      }

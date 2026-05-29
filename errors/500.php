@@ -1,0 +1,1 @@
+<?php $code=500; $title="Server Error"; $message="Something went wrong on the server."; include __DIR__ . '/_layout.php'; ?>
